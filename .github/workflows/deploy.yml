@@ -40,7 +40,7 @@ jobs:
       - name: Ejecutar K6
         uses: grafana/k6-action@v0.3.1
         with:
-          filename: tests/load-test.js
+          filename: ./tests/load-test.js
 
   build-and-push:
     name: Empaquetado (Docker)
