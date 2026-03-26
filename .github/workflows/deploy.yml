@@ -41,6 +41,8 @@ jobs:
         uses: grafana/k6-action@v0.3.1
         with:
           filename: ./tests/load-test.js
+        env:
+          K6_HOST: http://172.17.0.1:3000
 
   build-and-push:
     name: Empaquetado (Docker)
