@@ -1,5 +1,5 @@
 const express = require('express');
-const path = require('path');
+const path = require('node:path')
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const client = require('prom-client');
