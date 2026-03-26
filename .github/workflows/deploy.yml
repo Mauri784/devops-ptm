@@ -38,11 +38,10 @@ jobs:
       - name: Esperar que arranque
         run: sleep 5
       - name: Ejecutar K6
-        uses: grafana/k6-action@v0.3.1
-        with:
-          filename: ./tests/load-test.js
-        env:
-          K6_HOST: http://172.17.0.1:3000
+        run: |
+          docker run --rm --network host \
+            -v ${{ github.workspace }}:/workspace \
+            grafana/k6 run /workspace/tests/load-test.js
 
   build-and-push:
     name: Empaquetado (Docker)
