@@ -1,0 +1,29 @@
+name: CI Pipeline - Análisis SAST con SonarQube
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  sonarQube-analysis:
+    name: Análisis de Calidad de Código
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonación del repositorio (Checkout)
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Ejecución de Escáner SonarQube
+        uses: SonarSource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        with:
+          args: >
+            -Dsonar.projectKey=devops-ptm
+            -Dsonar.qualitygate.wait=true
