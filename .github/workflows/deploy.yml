@@ -38,7 +38,7 @@ jobs:
       - name: Instalar dependencias
         run: npm install
       - name: Iniciar app en background
-        run: node app.js &
+        run: node ./bin/www &
       - name: Verificar que la app arrancó
         run: |
           sleep 5
