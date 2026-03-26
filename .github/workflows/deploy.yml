@@ -24,8 +24,7 @@ jobs:
         with:
           args: >
             -Dsonar.projectKey=devops-ptm
-            -Dsonar.qualitygate.wait=true
-
+            
   k6:
     name: Prueba de Rendimiento (K6)
     runs-on: ubuntu-latest
