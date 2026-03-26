@@ -11,7 +11,7 @@ export const options = {
 };
 
 export default function main() {
-  const res = http.get('http://localhost:3000/health');
+const res = http.get(`${__ENV.K6_HOST}/health`);
   check(res, {
     'status is 200': (r) => r.status === 200,
   });
