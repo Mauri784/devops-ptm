@@ -48,7 +48,9 @@ jobs:
         run: |
           docker run --rm --network host \
             -v ${{ github.workspace }}:/workspace \
-            grafana/k6 run /workspace/tests/load-test.js
+            grafana/k6 run \
+            --out influxdb=http://34.132.56.98:8086/k6 \
+            /workspace/tests/load-test.js
 
   build-and-push:
     name: Empaquetado (Docker)
