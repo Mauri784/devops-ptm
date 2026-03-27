@@ -11,9 +11,13 @@ export const options = {
 };
 
 export default function main() {
-const res = http.get('http://localhost:3000/health');
-  check(res, {
-    'status is 200': (r) => r.status === 200,
-  });
+  const base = 'http://34.132.56.98';
+
+  const health = http.get(`${base}/health`);
+  check(health, { 'health status 200': (r) => r.status === 200 });
+
+  const items = http.get(`${base}/items`);
+  check(items, { 'items status 200': (r) => r.status === 200 });
+
   sleep(1);
 }
