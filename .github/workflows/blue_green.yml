@@ -1,0 +1,18 @@
+name: Blue-Green Deployment
+
+on:
+  workflow_dispatch:
+
+jobs:
+  blue-green-deploy:
+    name: Conmutación Blue-Green
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ejecutar conmutación Blue-Green
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.NGINX_HOST }}
+          username: ${{ secrets.NGINX_USER }}
+          key: ${{ secrets.NGINX_KEY }}
+          script: |
+            sudo bash ~/blue_green_switch.sh
