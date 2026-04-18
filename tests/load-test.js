@@ -11,7 +11,8 @@ export const options = {
 };
 
 export default function main() {
-  const base = 'http://34.132.56.98:8080';
+  const base = 'http://34.132.56.98:80';
+  const base = 'http://34.132.56.98';
 
   const health = http.get(`${base}/health`);
   check(health, { 'health status 200': (r) => r.status === 200 });
